@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>God's Eye View</title>
+  <script>
+    // BRANCH DEMO DEFAULT — first visit only: open the console over the
+    // Strait of Hormuz / southern Iran with live flights, military traffic,
+    // satellites, and earthquakes enabled (the "4D command center" view).
+    // One-time via localStorage so your own choices stick afterwards.
+    (function () {
+      try {
+        var KEY = 'gev:demo-default-applied';
+        if (!location.hash && !localStorage.getItem(KEY)) {
+          localStorage.setItem(KEY, '1');
+          location.replace('#lat=27.5&lon=56.0&alt=3600000&heading=0&pitch=-35' +
+            '&v=2&l=f.m.s.e&map=esri-imagery&hv=1&hud=tactical');
+        }
+      } catch (e) { /* private mode etc. — just load the app normally */ }
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -7716,7 +7716,11 @@ export default defineConfig(({ mode }) => {
       // app issue a perfectly same-origin credential write that passes every
       // Host/Origin check. These headers apply to everything this dev server
       // serves, which is what makes that attack impossible rather than unlikely.
-      headers: {
+      // RELAXED when binding to all interfaces (HOST=0.0.0.0/::) so hosted
+      // sandbox previews can embed the app in an iframe; local runs keep DENY.
+      headers: (env.HOST === '0.0.0.0' || env.HOST === '::')
+        ? { 'Content-Security-Policy': "frame-ancestors *" }
+        : {
         'X-Frame-Options': 'DENY',
         'Content-Security-Policy': "frame-ancestors 'none'",
       },
