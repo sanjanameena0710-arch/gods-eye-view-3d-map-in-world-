@@ -1,0 +1,19 @@
+# Keep the build context small — none of this is needed at runtime.
+node_modules
+.git
+.github
+.env
+.env.*
+*.log
+docs
+pinokio
+tools
+TESTING.md
+CHANGELOG.md
+CONTRIBUTING.md
+DATA_SOURCES.md
+SECURITY.md
+Dockerfile
+docker-compose.yml
+render.yaml
+.dockerignore
