@@ -1,0 +1,17 @@
+# Self-host God's Eye View on any machine with Docker:
+#   docker compose up -d --build
+# Then open http://<machine-ip>:4173 (LAN) or put nginx/Caddy with TLS in front.
+services:
+  gods-eye-view:
+    build: .
+    container_name: gods-eye-view
+    ports:
+      - "4173:4173"
+    environment:
+      HOST: 0.0.0.0
+      PORT: "4173"
+      # Optional keys (the app runs keyless on Esri imagery without them):
+      # GOOGLE_MAPS_API_KEY: ""
+      # CESIUM_ION_TOKEN: ""
+      # OPENAI_API_KEY: ""
+    restart: unless-stopped

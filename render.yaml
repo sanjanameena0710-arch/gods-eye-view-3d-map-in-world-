@@ -1,0 +1,17 @@
+# Render Blueprint — deploy God's Eye View with one click.
+# In the Render dashboard: New + → Blueprint → pick this repo → Apply.
+# Free plan note: the service sleeps after ~15 min idle; the first visit
+# after that takes about a minute to wake (cold start).
+services:
+  - type: web
+    name: gods-eye-view
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      # Optional keys — paste them in Render's Environment tab later
+      # (GOOGLE_MAPS_API_KEY, CESIUM_ION_TOKEN, OPENAI_API_KEY, ...).
+      # The app works keyless on Esri World Imagery without them.
